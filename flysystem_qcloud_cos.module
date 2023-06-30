@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * @file
+ * Provides a Qcloud COS plugin for Flysystem.
+ */
+
+use Drupal\flysystem_qcloud_cos\Plugin\Field\FieldFormatter\QcloudCosFileAudioFormatter;
+use Drupal\flysystem_qcloud_cos\Plugin\Field\FieldFormatter\QcloudCosFileDefaultFormatter;
+use Drupal\flysystem_qcloud_cos\Plugin\Field\FieldFormatter\QcloudCosFileLinkFormatter;
+use Drupal\flysystem_qcloud_cos\Plugin\Field\FieldFormatter\QcloudCosFileTableFormatter;
+use Drupal\flysystem_qcloud_cos\Plugin\Field\FieldFormatter\QcloudCosFileUriFormatter;
+use Drupal\flysystem_qcloud_cos\Plugin\Field\FieldFormatter\QcloudCosFileUrlPlainFormatter;
+use Drupal\flysystem_qcloud_cos\Plugin\Field\FieldFormatter\QcloudCosFileVideoFormatter;
+use Drupal\flysystem_qcloud_cos\Plugin\Field\FieldFormatter\QcloudCosImageFormatter;
+use Drupal\flysystem_qcloud_cos\Plugin\Field\FieldFormatter\QcloudCosImageUrlFormatter;
+use Drupal\flysystem_qcloud_cos\Plugin\Field\FieldFormatter\QcloudCosRssEnclosureFormatter;
+
+/**
+ * Implements hook_field_formatter_info_alter().
+ */
+function flysystem_qcloud_cos_field_formatter_info_alter(array &$info) {
+
+  if (array_key_exists('image', $info)) {
+    $info['image']['class'] = QcloudCosImageFormatter::class;
+  }
+  if (array_key_exists('file_video', $info)) {
+    $info['file_video']['class'] = QcloudCosFileVideoFormatter::class;
+  }
+  if (array_key_exists('file_audio', $info)) {
+    $info['file_audio']['class'] = QcloudCosFileAudioFormatter::class;
+  }
+  if (array_key_exists('file_link', $info)) {
+    $info['file_link']['class'] = QcloudCosFileLinkFormatter::class;
+  }
+  if (array_key_exists('file_uri', $info)) {
+    $info['file_uri']['class'] = QcloudCosFileUriFormatter::class;
+  }
+  if (array_key_exists('file_rss_enclosure', $info)) {
+    $info['file_rss_enclosure']['class'] = QcloudCosRssEnclosureFormatter::class;
+  }
+  if (array_key_exists('file_table', $info)) {
+    $info['file_table']['class'] = QcloudCosFileTableFormatter::class;
+  }
+  if (array_key_exists('file_url_plain', $info)) {
+    $info['file_url_plain']['class'] = QcloudCosFileUrlPlainFormatter::class;
+  }
+  if (array_key_exists('file_default', $info)) {
+    $info['file_default']['class'] = QcloudCosFileDefaultFormatter::class;
+  }
+  if (array_key_exists('image_url', $info)) {
+    $info['image_url']['class'] = QcloudCosImageUrlFormatter::class;
+  }
+  if (array_key_exists('file_default', $info)) {
+    $info['file_default']['class'] = QcloudCosFileDefaultFormatter::class;
+  }
+}
