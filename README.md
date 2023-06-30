@@ -1,5 +1,7 @@
 # Flysystem Qcloud COS
 
+This is for drupal.
+
 Provides a Qcloud COS plugin for [Flysystem](https://www.drupal.org/project/flysystem)
 
 ## Dependencies
